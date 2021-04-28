@@ -1,6 +1,7 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-  }
+
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
   //https://youtu.be/TQU6BWtc3yc
   var mysql = require("mysql");
   const db = mysql.createConnection({
@@ -9,6 +10,11 @@ if (process.env.NODE_ENV !== 'production') {
     password: process.env.DB_PASS,
     database: process.env.DB_DB,
     port: process.env.DB_PORT,
+  });
+
+  db.connect((err) => {
+    if (err) throw err;
+    console.log("Connected!");
   });
   module.exports = {
     db: db,
