@@ -4,15 +4,18 @@ extends layout
 block content
 
   .maincontent
-
-
-              
-        div      
-              
-            img(src=item.url ,alt=item.title)
-            p item.title
-            a.closeWindow(href='/catalogue') x
-        div 
-            each item in matchingitems
-                img.thumbnail(src=item.url ,alt=item.title)
-                p item.title
+       
+        div.mainitem
+        a.closeWindow(href='/catalogue') x
+            each item in items  
+                h1 #{item.title}    
+                img(src=item.url ,alt=item.title)
+                h2 #{item.composition} #{item.sleeve}
+            
+        div.recommandation 
+            h2 you might like
+            .grid-container
+                each product in matchingItems
+                    a.div(href='/item/'+product.id)
+                        img.thumbnail(src=product.url ,alt=product.title)
+                        p #{product.title}

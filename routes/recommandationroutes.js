@@ -40,11 +40,15 @@ router.get("/item/:id", async function (req, res) {
                   .getMatchingItems(item, items)
                   .then((resolveMatchingItems) => {
                     const matchingItems = resolveMatchingItems;
+                    // console.log("matchingItems");
+                    // console.log(matchingItems);
+                    // console.log("item[0]");
+                    // console.log(item[0]);
                     try {
-                        // res.render("item", {
-                        //   item,
-                        //   matchingItems
-                        // });
+                        res.render("item", {
+                          items: item,
+                          matchingItems: matchingItems
+                        });
                       } catch (e) {
                         console.error(e);
                         res.redirect("/");

@@ -5,6 +5,8 @@ const getAllItems = require("../get/getallitems");
 const dbData = require("../dbdata");
 var mysql = require("mysql");
 const db = dbData.db;
+const rgb2Hex = require("rgb-hex");
+
 
 // the Vision detect image properties features can be used either against a local file or 
 // a remote file. to use it against a remote file you need the reference of the bucket and 
@@ -84,12 +86,13 @@ router.get("/visioncalldummy", function (req, res) {
         for (let index = 0; index < items.length; index++) {
           const item = items[index];
           let color = colors[Math.floor(Math.random() * colors.length)];
+          var hex = `#${rgb2Hex(color.color.red,color.color.green,color.color.blue)}`;
 
           try {
             let sqlRed = "UPDATE items SET red  = '"+ color.color.red +"' WHERE id = '"+item.id+"'";
             let sqlGreen = "UPDATE items SET green  = '"+ color.color.green +"' WHERE id = '"+item.id+"'";
             let sqlBlue = "UPDATE items SET blue  = '"+ color.color.blue +"' WHERE id = '"+item.id+"'";
-            //console.log(sql);
+            let sqlHex = "UPDATE items SET hex = '"+ hex +"' WHERE id = '"+item.id+"'"; 
             db.query(sqlRed, (err, res1) => {
               if (err) throw err;
               console.error(res1);
@@ -99,6 +102,10 @@ router.get("/visioncalldummy", function (req, res) {
               console.error(res1);
             });
             db.query(sqlBlue, (err, res1) => {
+              if (err) throw err;
+              console.error(res1);
+            });
+            db.query(sqlHex, (err, res1) => {
               if (err) throw err;
               console.error(res1);
             });
