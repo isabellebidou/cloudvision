@@ -7,6 +7,7 @@ const recommandationRoutes = require("./routes/recommandationroutes");
 app.use(uploadRoutes);
 app.use(visionApiRoutes);
 app.use(recommandationRoutes);
+app.use(express.static("scripts"));
 app.get("/", (req, res) => res.render("index"));
 app.set("view engine", "pug");
 //set up the environment for the app to run

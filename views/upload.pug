@@ -1,9 +1,12 @@
 extends layout
+block navigation
+      a(href='/') home
+      a(href='/catalogue') catalogue
 block content
       .maincontent
         form#upload(action='/uploadcsv', method='POST' enctype='multipart/form-data')
-            fieldset
+            
                     legend browse to csv file
-                        label select csv file:
+                        
                         input.longInput(name= "csv", type = "file" required) 
                         input(type='submit', value='upload')
