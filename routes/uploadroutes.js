@@ -6,9 +6,9 @@ const router = express.Router();
 const upload = require("../storage-config");
 const parse = require("csv-parse");
 const fs = require("fs");
-const items = [];
+//const items = [];
 const dbData = require("../dbdata");
-var mysql = require("mysql");
+//var mysql = require("mysql");
 const db = dbData.db;
 
 router.get("/uploadcsv", function (req, res) {
@@ -56,7 +56,7 @@ router.post("/uploadcsv", upload.single("csv"), (req, res) => {
           console.error(res1);
         });
 
-        items.push(item);
+        //items.push(item);
       })
       .on("end", () => {
         try {

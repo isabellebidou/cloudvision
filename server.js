@@ -3,8 +3,10 @@ var express = require("express"); // call expresss to be used by application
 var app = express();
 const uploadRoutes = require("./routes/uploadroutes");
 const visionApiRoutes = require("./routes/visionapiroutes");
+const recommandationRoutes = require("./routes/recommandationroutes");
 app.use(uploadRoutes);
 app.use(visionApiRoutes);
+app.use(recommandationRoutes);
 app.get("/", (req, res) => res.render("index"));
 app.set("view engine", "pug");
 //set up the environment for the app to run

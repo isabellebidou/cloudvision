@@ -1,0 +1,18 @@
+extends layout
+      
+              
+block content
+
+  .maincontent
+
+
+              
+        div      
+              
+            img(src=item.url ,alt=item.title)
+            p item.title
+            a.closeWindow(href='/catalogue') x
+        div 
+            each item in matchingitems
+                img.thumbnail(src=item.url ,alt=item.title)
+                p item.title

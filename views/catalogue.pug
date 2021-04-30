@@ -1,0 +1,11 @@
+extends layout
+
+block content
+      .maincontent    
+          .grid-container
+                each item in items
+
+                    a.div(href='/item/'+item.id)
+                        img.thumbnail(src=item.url, alt=item.title)
+
+                        //https://coryrylan.com/blog/how-to-center-in-css-with-css-grid
